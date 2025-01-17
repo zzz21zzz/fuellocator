@@ -1,0 +1,41 @@
+{% extends "index.html" %}
+
+{% block main %}
+    <h1 class="text-center mb-4">Report Time Spent at a Station</h1>
+    <form action="/report" method="POST" class="border p-4 rounded bg-light shadow">
+    <!-- Form for submitting station time data -->
+        <div class="mb-3">
+        <!-- Dropdown to select a station -->
+            <label for="station" class="form-label">Select Station:</label>
+            <select id="station" name="station" class="form-select" required>
+            <!-- Unselectable option to explain to User-->
+                <option value=""=""=""="" disabled selected>Select Station</option>
+                {% for station in stations %}
+            <!-- Populate dropdown with station names and addresses passed from the backend -->
+                    <option value="{{ station.name }}">{{ station.name }} - {{ station.address }}</option>
+                {% endfor %}
+            </select>
+        </div>
+        <div class="mb-3">
+        <!-- Input for entering the time spent at the station -->
+            <label for="time_spent" class="form-label">Time Spent (minutes):</label>
+            <input type="hidden" id="station_address" name="station_address">
+        <!-- Hidden input to store the selected station's address -->
+            <input type="number" id="time_spent" name="time_spent" min="1" step="1" class="form-control" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100">Submit</button>
+    <!-- Submit button for the form -->
+    </form>
+
+<!-- Script to automatically fill the hidden address field based on selected station -->
+    <script>
+        document.getElementById('station').addEventListener('change', function() {
+            var selectedOption = this.options[this.selectedIndex]; // Get selected option
+            var address = selectedOption.text.split(' - ')[1]; // Extract the address from the text
+            document.getElementById('station_address').value = address; // Set hidden input value
+            console.log(address);
+        });
+    </script>
+{% endblock %}
+
+<!-- Copyright Isa and Femi -->
