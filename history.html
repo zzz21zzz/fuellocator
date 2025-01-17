@@ -1,0 +1,28 @@
+{% extends "index.html" %}
+<!-- Page that displays all  users history -->
+{% block main %}
+    <table class="table table-striped table-hover">
+        <thead class="table-dark">
+            <tr>
+                <th>Name</th>
+                <th>Address</th>
+                <th>Time Reported</th>
+            </tr>
+        </thead>
+        <tbody>
+        <!-- Loop through the rows of data passed from the backend -->
+            {% for row in rows %}
+                <tr>
+            <!-- Display station name -->
+                    <td>{{ row.name }}</td>
+            <!-- Display station address -->
+                    <td>{{ row.address }}</td>
+            <!-- Display the reported time spent -->
+                    <td>{{ row.time_spent_minutes }}</td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+{% endblock %}
+
+<!-- Copyright Isa anad Femi -->

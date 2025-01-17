@@ -1,0 +1,39 @@
+{% extends "index.html" %}
+
+{% block main %}
+<!-- Popup HTML -->
+    <div id="popup" class="popup">
+        <div class="popup-content">
+            <h2>Why Does This Matter?</h2>
+            <p>
+                Fuel Scarcity is a big problem in our home country, Nigeria, and because of this, thousands of people spend over 120 minutes queuing up for fuel, only to get to the front of the lines to see there is no fuel. And because of the congested traffic, it’s hard to make a decision on which fuel station to go to. Also because of the congestion, any wrong decision means you're stuck wherever you chose!
+            </p>
+            <p>
+                Not very good sounding, I suppose... But enough whining over a problem of the past.
+            </p>
+            <button id="close-popup" class="btn btn-primary mt-3">Try Fuel Locator Now!</button>
+        </div>
+    </div>
+    <div id="summary" class="mb-4">
+        <h2>Welcome to Fuel Locator, by Isa and Femi</h2>
+        <p>
+            Fuel Locator helps you find and rank the best gas stations nearby based on average time spent. Scroll down to see your top 3!
+            You can also (and we and we hope that you do!) report your time spent at stations to help improve recommendations for others. Click on a station to see more details!
+        </p>
+        <p><strong>Note:</strong> If this is your first visit, it may take a few seconds to load data for your location.</p>
+    </div>
+    <div id="map"></div>
+    <div id="info">
+        <p>Click a station for more details!</p>
+        <div id="details"></div>
+    </div>
+
+<!-- Section to display ranked stations -->
+    <div id="ranked-stations" class="mt-4"></div>
+
+<!-- Link to the JavaScript file -->
+    <script src="{{ url_for('static', filename='script.js') }}" defer></script>
+
+{% endblock %}
+
+<!-- Copyright Isa and Femi -->
